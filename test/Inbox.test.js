@@ -9,29 +9,15 @@ const Web3 = require('web3'); // constructor -> we need to create an instance we
 const web3 = new Web3(ganache.provider());
 
 // testing framework mocha
-class Car {
-    park(){
-        return 'stopped';
-    }
+beforeEach(()=> {
+    // Get a list of all accounts
+    web3.eth.getAccounts() // return a promise
+        .then(fetchedAccounts => {
+            console.log(fetchedAccounts)
+        });
+    // use one of that accounts to deploy
+});
 
-    drive(){
-        return 'vroom';
-    }
-}
-
-// first is just for me to know what im doing
-describe('Car', () => {
-    it('can park', () => {
-        //actual test setup
-
-        // instance
-        const car = new Car();
-        // assert one value equal to other
-        assert.equal(car.park(), 'stopped');
-
-    });
-    it('can drive', () => {
-        const car = new Car();
-        assert.equal(car.drive(), 'vroom');
-    })
+describe('Inbox', () => {
+    it('deploys a contract', () => {})
 })
