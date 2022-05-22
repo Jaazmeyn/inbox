@@ -8,16 +8,17 @@ const Web3 = require('web3'); // constructor -> we need to create an instance we
 // provider helps web3 and network (f.e testnetwork ganache) to communicate.
 const web3 = new Web3(ganache.provider());
 
+let accounts;
+
 // testing framework mocha
-beforeEach(()=> {
+beforeEach(async () => {
     // Get a list of all accounts
-    web3.eth.getAccounts() // return a promise
-        .then(fetchedAccounts => {
-            console.log(fetchedAccounts)
-        });
+    accounts = await web3.eth.getAccounts();
     // use one of that accounts to deploy
 });
 
 describe('Inbox', () => {
-    it('deploys a contract', () => {})
+    it('deploys a contract', () => {
+        console.log(accounts)
+    })
 })
